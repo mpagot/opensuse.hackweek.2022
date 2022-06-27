@@ -1,4 +1,4 @@
-## Opensuse h4ckweek 2022 - navigation log
+# Opensuse h4ckweek 2022 - navigation log
 
 [Project page](https://hackweek.opensuse.org/projects/give-back-to-wezterm)
 
@@ -7,58 +7,108 @@
 ![Image](img/computer_color.png)
 
 
-
-### Day 1
+## Day 1
 
 This day is mostly dedicated to trace a path
 
-#### TO DO
+### DONE
 
-##### Create a webpage to show the progress
-* page formatting
-
-##### Test Hello World
-Create a bare minimal hello world test to deploy a TW and install Wezterm
-
-#### DONE
-
-##### Create a webpage to show the progress
+#### Create a webpage to show the progress
  * repo created
  * gh-pages branch created
  * theme selected and create a first index.md
  * add hackweek logo
- * looking at (testing-your-github-pages-site-locally-with-jekyll)[https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll] to be able to build the page locally. Some issue as bundle installed jekyll is not found by bundle as running `bundle exec jekyll`. This one helps: [devhints.io](https://devhints.io/jekyll) but then I face (issues/399)[https://github.com/github/pages-gem/issues/399], workaround using `PAGES_REPO_NWO=michelepagot/opensuse.hackweek.2022` but then face (issues/8523)[https://github.com/jekyll/jekyll/issues/8523] solved by running `bundle add webrick`  ... ok, I have my page served locally and enough Ruby for the moment ...
+ * render the page locally:
+  1. looking at [testing-your-github-pages-site-locally-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) to be able to build the page locally.
+  2. Some issue as bundle installed jekyll is not found by bundle as running `bundle exec jekyll`.
+  3. This one helps: [devhints.io](https://devhints.io/jekyll) but then ...
+  4. I face [issues/399](https://github.com/github/pages-gem/issues/399),
+  5. workaround using `PAGES_REPO_NWO=michelepagot/opensuse.hackweek.2022` but then ...
+  6. I face (issues/8523)[https://github.com/jekyll/jekyll/issues/8523] solved by running `bundle add webrick`
+
+... ok, I have my page served locally and enough Ruby for the moment ...
+
+#### Test Hello World
+Create a bare minimal hello world test to deploy a TW and install Wezterm
+
+##### Test code
+* maybe tomcat is a good candidate. Use as template these 3 files:
+```
+  cp schedule/functional/tomcat.yaml schedule/functional/wezterm.yaml
+  cp tests/x11/tomcat.pm tests/x11/wezterm.pm
+  cp lib/Tomcat/Utils.pm lib/Wezterm/Utils.pm
+```
+
+Hackweek test code is published on [wezterm_hackweek](https://github.com/mpagot/os-autoinst-distri-opensuse/tree/wezterm_hackweek)
+
+##### How to run my test?
+
+I have some committed test code and a schedule. How to run them? In particular:
+* Where to run? On which openQA instance? Do I need an instance?
+* How to configure or trigger? Clone? Start from scratch?
+
+I know about **openqa-clone-custom-git-refspec** but how it works? Which openQA instance to use?
+
+I'd like a job to clone. It should be Tumbleweed based (I'm only aware about wezterm package existing for TW).
+
+Should I keep looking at tomcat test as reference? Where tomcat is running in openQA? On which instance? Generally speaking -giving a test name how to find an execution example?-
+
+###### openQA instance
+I already have a openQA personal instance on a private server. Otherwise I should look at [o3](https://openqa.opensuse.org/).
+Or maybe I do not need an openQA instance at all [isotovideo](https://kalikiana.gitlab.io/post/2022-03-16-running-standandalone-tests-with-isotovideo/)
+
+###### Should I clone "tomcat"?
+* look for string **functional/tomcat** in some of the trigger/bot repo that I'm aware of... no luck.
+* look in o3 with its search engine ... no luck.
+* ask the oracle: google... [issues/91187](https://progress.opensuse.org/issues/91187) and it has a lot of useful links :-)
+
+###### Should I clone a relevant TW job?
+[Group and build](https://openqa.opensuse.org/tests/overview?distri=microos&distri=opensuse&version=Tumbleweed&build=20220625&groupid=1)
+
+First attempt: my first attempt was to clone [GNOME on TW](https://openqa.opensuse.org/tests/2436441)
+
+```
+openqa.opensuse.orgopenqa.opensuse.org
+openQA: opensuse-Tumbleweed-DVD-x86_64-Build20220625-desktopapps-gnome-x11@64bit test results
+openQA is a testing framework mainly for distributions
+```
+
+as it seems simple enough: 3 steps, 51 sec ...isn't it? But as result of:
+
+```
+% openqa-clone-job --from https://openqa.opensuse.org/tests/2436441 --skip-chained-deps  SCHEDULE=tests/boot/boot_to_desktop
+```
+
+![Image](img/first_failure.png)
+
+### TO DO
+
+#### Create a web page to show the progress
+* page formatting
+
+#### Test Hello World
+Create a bare minimal hello world test to deploy a TW and install Wezterm.
 
 
+## Backlog and ideas
 
-### Backlog and ideas
-
-* Research and contact the opensuse wezterm package mainteiner
+* Research and contact the opensuse Wezterm package maintainer
 * Look at where to start from (openQA)
   - Look at similar test in openQA (firefox in x11 ?? )
-  - where to develope (on which openQA instance)?
+  - where to develop (on which openQA instance)?
   - where to let the test run?
-  - where to version the test code (test/lib/schedule): in os-autoinst-distri-opensuse or on the wezterm repo directly (I like more the second one but I'm not sure if it is feasable)
+  - where to version the test code (test/lib/schedule): in os-autoinst-distri-opensuse or on the wezterm repo directly (I like more the second one but I'm not sure if it is feasible)
 * try to start natively to code test in python?
 * look at how to trigger:
-  - wezterm github action
-  - monitoring osd for wezterm package
+  - Wezterm github action
+  - monitoring osd for Wezterm package
 
 
 
-### Documentation and link collection
+## Documentation and link collection
 
-openQA doc
- - http://open.qa/docs/
-
-Wezterm doc
- - https://wezfurlong.org/wezterm/
-
-Wezterm repo
- - https://github.com/wez/wezterm
-
-Lua
-
-Jekyll and github pages :
- - https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll
-
+- [openQA doc](http://open.qa/docs/)
+- [Wezterm doc](https://wezfurlong.org/wezterm/)
+- [Wezterm repo](https://github.com/wez/wezterm)
+- Lua
+- [Jekyll and github pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)
