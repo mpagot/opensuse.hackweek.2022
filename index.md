@@ -1,5 +1,8 @@
 # Opensuse h4ckweek 2022 - navigation log
 
+This project is about writing and running a set of tests for a GUI application using openQA.
+This project is also about reading and digesting the Wezterm documentation and become a ninja of its lua configuration system.
+
 [Project page](https://hackweek.opensuse.org/projects/give-back-to-wezterm)
 
 [this page source code](https://github.com/michelepagot/opensuse.hackweek.2022)
@@ -8,10 +11,11 @@
 
 
 ## Day 1
-
 This day is mostly dedicated to trace a path
 
 ### DONE
+In Day1 I manage to create a test skeleton but I miss the target to see Wezterm up and running in a openQA test. The TW base test **boot_to_desktop** keep to fail when running on my personal openQA instance. So too few Wezterm for Day1.
+I manage to create this page and setup everything locally on my laptop to locally generate this page but I do not master the Jeklly blog generator yet and I do not like as the page is rendered.
 
 #### Create a webpage to show the progress
  * repo created
@@ -81,14 +85,25 @@ as it seems simple enough: 3 steps, 51 sec ...isn't it? But as result of:
 
 ![Image](img/first_failure.png)
 
-### TO DO
 
-#### Create a web page to show the progress
-* page formatting
+## Day 2
+I hope for myself more Wezterm fun...
 
-#### Test Hello World
-Create a bare minimal hello world test to deploy a TW and install Wezterm.
+### TODO
 
+#### Hackweek webpage
+* Split the Jeklly page on multiple page, one for each day
+* Fix the formatting to have the logo on the left column
+* Create a new separate page where to start developing a hackweek presentation (reveal.js maybe)
+
+#### openQA
+* Ask about the failure on my personal openQA instance
+* Ask if it is possible to run the test on some existing openQA instance (maybe the o3 public one)
+* Keep exploring [isotovideo](https://kalikiana.gitlab.io/post/2022-03-16-running-standandalone-tests-with-isotovideo/)
+
+#### Wezterm
+* look at needles
+* look at how to generate wezterm.lua
 
 ## Backlog and ideas
 
@@ -102,8 +117,6 @@ Create a bare minimal hello world test to deploy a TW and install Wezterm.
 * look at how to trigger:
   - Wezterm github action
   - monitoring osd for Wezterm package
-
-
 
 ## Documentation and link collection
 
