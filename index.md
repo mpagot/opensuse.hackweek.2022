@@ -1,13 +1,14 @@
+---
+title: Opensuse h4ckweek 2022 AAAA
+toc: true
+---
+
 # Opensuse h4ckweek 2022 - navigation log
 
 This project is about writing and running a set of tests for a GUI application using openQA.
 This project is also about reading and digesting the Wezterm documentation and become a ninja of its lua configuration system.
 
 [Project page](https://hackweek.opensuse.org/projects/give-back-to-wezterm)
-
-[this page source code](https://github.com/michelepagot/opensuse.hackweek.2022)
-
-![Image](img/computer_color.png)
 
 
 ## Day 1
@@ -88,6 +89,11 @@ as it seems simple enough: 3 steps, 51 sec ...isn't it? But as result of:
 
 ## Day 2
 I hope for myself more Wezterm fun...
+
+### DONE
+
+#### Hackweek webpage
+From the github project page configuration I selected the theme **jeklly-theme-minimal**. The theme official documentation is at [minimal](https://github.com/pages-themes/minimal).
 
 ### TODO
 
